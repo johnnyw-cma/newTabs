@@ -1,0 +1,8 @@
+{
+  "name": "newTabs",
+  "app_id": "d0feca80",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
