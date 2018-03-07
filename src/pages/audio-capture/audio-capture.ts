@@ -89,7 +89,7 @@ export class AudioPage {
     this.recordingDuration = moment({hour: 0, minute: 0, seconds: 0});
     this.subscription = Observable.interval(1000).subscribe(x => {
       // the number 1000 is on miliseconds so every second is going to have an iteration of what is inside this code.
-        this.recordingDuration.add(1, 'seconds');
+        this.recordingDuration = this.recordingDuration.add(1, 'seconds');
         console.log (this.recordingDuration);
       });
   }

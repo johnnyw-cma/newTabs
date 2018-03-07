@@ -18,7 +18,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MomentModule } from 'angular2-moment'; 
-import * as moment from 'moment';
+import moment from 'moment';
 
 @NgModule({
   declarations: [
