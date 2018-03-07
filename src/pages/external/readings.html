@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Readings</ion-title>
+    <ion-title>Content</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content overflow-scroll='true'>
-  <ion-item>Page opened in external browser...</ion-item>
+<ion-content padding>
+  <div [innerHTML]="readingsHtmlContent"></div>
 </ion-content>

@@ -11,6 +11,7 @@ import * as cheerio from 'cheerio'
 export class ReadingsPage {
 	public start_up: any;
 	public readings_url: string;
+	public readingsHtmlContent =''
 
 	constructor(
 		public navCtrl: NavController,
