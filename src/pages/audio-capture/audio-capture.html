@@ -10,8 +10,10 @@
   <ion-card>
     <ion-card-content>
       <ion-card-title>
-        <button ion-button primary (click)="stopRecord()" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
-        <button ion-button primary (click)="startRecord()" *ngIf="!recording"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</button>
+        <button ion-button primary (click)="stopRecord()" color="danger" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
+        <timer *ngIf="recording" interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
+        <button ion-button primary (click)="showPrompt()" *ngIf="!recording && !playing"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</button>
+        <button ion-button primary (click)="stopPlayback()" *ngIf="playing"><ion-icon name="hand"></ion-icon>&nbsp;&nbsp;Stop Playback</button>
       </ion-card-title>
     </ion-card-content>
   </ion-card>

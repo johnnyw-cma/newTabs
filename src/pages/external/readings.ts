@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import * as rp from 'request-promise';
-//import { InAppBrowser } from '@ionic-native/in-app-browser';
 import * as cheerio from 'cheerio'
 
 @Component({
@@ -17,21 +16,24 @@ export class ReadingsPage {
 		public navCtrl: NavController,
 		private platform: Platform) {
 
-		//var readings_url = "https://crystalmeth.org/cma-meetings/start-a-meeting/meeting-readings/category/3-cma-readings.html";
-		this.readings_url = 'https://crystalmeth.org/cma-meetings/start-a-meeting/meeting-readings/category/3-cma-readings.html';
-		//var target = "_system"; 
-		//var options = "location=yes,toolbar=yes";
-		//const browser = iab.create(readings_url, target, options);
-
+		this.readings_url = "https://crystalmeth.org/cma-meetings/start-a-meeting/meeting-readings/category/3-cma-readings.html";
+		
 		platform.ready().then(() => {
 			let resp = this.gettHtmlContent(this.readings_url);
-			console.log(resp)
+			console.log(JSON.stringify(resp));
 		})
 	}
 
 	gettHtmlContent(uri) {
 		var options = {
 			method: 'GET',
+			simple: true,
+			headers: {
+				'User-Agent': 'CMA App',
+				'Origin': null,
+				'Referer': 'http://crystalmeth.org',
+				'Accept': 'text/json'
+			},
 			uri: uri,
 		};
 		return rp(options)
@@ -41,6 +43,8 @@ export class ReadingsPage {
 				return htmlString;
 			})
 			.catch(function (err) {
+				console.log('ERROR: ');
+				console.log(JSON.stringify(err));
 				return err;
 			});
 	}

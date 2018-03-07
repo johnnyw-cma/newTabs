@@ -1,11 +1,9 @@
 //import { NativeAudio } from '@ionic-native/audio';
 import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, Platform} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, Platform} from 'ionic-angular';
 import {Media, MediaObject } from '@ionic-native/media';
 import {File} from '@ionic-native/file';
-
-
-//import {Camera} from '@ionic-native/camera';
+import * as timer from 'angular-timer';
 
 @IonicPage()
 @Component({
@@ -24,27 +22,62 @@ export class AudioPage {
 
   @ViewChild('myaudio')
   recording: boolean = false;
+  playing: boolean = false;
   filePath: string;
   fileName: string;
   audio: MediaObject;
   audioList: any[] = [];
 
   constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
               public platform: Platform,
               private file: File,
               private media: Media) {
   }
 
-  startRecord() {
+  showPrompt() {
+    let prompt = this.alertCtrl.create({
+      title: 'Name of Speaker',
+      message: "Please tell us the Speaker's first name and last initial.",
+      inputs: [
+        {
+          name: 'speaker_name',
+          placeholder: 'Bill W.'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Begin recording',
+          handler: data => {
+            console.log('Saved clicked');
+            this.startRecord(data);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  startRecord(data) {
+    var speaker_name: String = data.speaker_name;
+    var date = new Date();
+    let date_of_talk = date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
+    this.fileName = speaker_name.replace(/\ /g, '_').trim() + '_' + date_of_talk;
+
     if (this.platform.is('ios')) {
-      this.fileName = 'record'+new Date().getDate()+new Date().getMonth()+new Date().getFullYear()+new Date().getHours()+new Date().getMinutes()+new Date().getSeconds()+'.m4a';
+      this.fileName += '.m4a';
       this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + this.fileName;
-      this.audio = this.media.create(this.filePath);
     } else if (this.platform.is('android')) {
-      this.fileName = 'record'+new Date().getDate()+new Date().getMonth()+new Date().getFullYear()+new Date().getHours()+new Date().getMinutes()+new Date().getSeconds()+'.3gp';
+      this.fileName += '.3gp';
       this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
-      this.audio = this.media.create(this.filePath);
     }
+    this.audio = this.media.create(this.filePath);
     this.audio.startRecord();
     this.recording = true;
   }
@@ -59,6 +92,10 @@ export class AudioPage {
   }
   
   playAudio(file,idx) {
+    //stop any current playback
+    if (this.playing)
+      this.stopPlayback();
+
     if (this.platform.is('ios')) {
       this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + file;
       this.audio = this.media.create(this.filePath);
@@ -66,7 +103,13 @@ export class AudioPage {
       this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + file;
       this.audio = this.media.create(this.filePath);
     }
+    this.playing = true;
     this.audio.play();
     this.audio.setVolume(0.8);
+  }
+
+  stopPlayback(){
+    this.audio.stop();
+    this.playing = false;
   }
 }

@@ -2,12 +2,13 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MyApp } from './app.component';
 import { Media } from '@ionic-native/media';
+import * as timer from 'angular-timer';
 import { File } from '@ionic-native/file';
 import * as rp from 'request-promise';
 import { Cheerio } from 'cheerio';
+
 
 import { AboutPage } from '../pages/about/about';
 import { AudioPage } from '../pages/audio-capture/audio-capture';
@@ -33,6 +34,7 @@ import { MomentModule } from 'angular2-moment';
   imports: [
     BrowserModule,
     MomentModule,
+    timer,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -50,8 +52,8 @@ import { MomentModule } from 'angular2-moment';
     StatusBar,
     Media,
     File,
+    timer,
     SplashScreen,
-    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
