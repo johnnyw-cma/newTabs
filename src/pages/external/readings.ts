@@ -27,7 +27,7 @@ export class ReadingsPage {
 	gettHtmlContent(uri) {
 		var options = {
 			method: 'GET',
-			simple: true,
+			simple: false,
 			headers: {
 				'User-Agent': 'CMA App',
 				'Origin': null,

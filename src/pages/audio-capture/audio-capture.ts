@@ -1,9 +1,10 @@
-//import { NativeAudio } from '@ionic-native/audio';
 import {Component, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, NavController, Platform} from 'ionic-angular';
 import {Media, MediaObject } from '@ionic-native/media';
 import {File} from '@ionic-native/file';
-import * as timer from 'angular-timer';
+import {Observable} from 'rxjs/Rx';
+import {MomentModule} from 'angular2-moment';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -23,6 +24,8 @@ export class AudioPage {
   @ViewChild('myaudio')
   recording: boolean = false;
   playing: boolean = false;
+  subscription: any;
+  recordingDuration: any;
   filePath: string;
   fileName: string;
   audio: MediaObject;
@@ -32,6 +35,7 @@ export class AudioPage {
               public alertCtrl: AlertController,
               public platform: Platform,
               private file: File,
+              public mm: MomentModule,
               private media: Media) {
   }
 
@@ -80,6 +84,14 @@ export class AudioPage {
     this.audio = this.media.create(this.filePath);
     this.audio.startRecord();
     this.recording = true;
+
+    //start a timer
+    this.recordingDuration = moment({hour: 0, minute: 0, seconds: 0});
+    this.subscription = Observable.interval(1000).subscribe(x => {
+      // the number 1000 is on miliseconds so every second is going to have an iteration of what is inside this code.
+        this.recordingDuration.add(1, 'seconds');
+        console.log (this.recordingDuration);
+      });
   }
 
   stopRecord() {
@@ -88,6 +100,8 @@ export class AudioPage {
     this.audioList.push(data);
     localStorage.setItem("audiolist", JSON.stringify(this.audioList));
     this.recording = false;
+    this.subscription.unsubscribe();
+    this.recordingDuration = 0;
     this.getAudioList();
   }
   
