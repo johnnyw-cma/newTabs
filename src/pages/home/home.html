@@ -5,13 +5,21 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-item>
+    <ion-label>Clean Date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM DD YYYY" (ionChange)="store_new_date()" [(ngModel)]="clean_date"></ion-datetime>
+  </ion-item>
+  <ion-item-group id="computedTime" *ngIf="clean_date" class="vertical-align-content">
+    <ion-item class="list-group-item"><h1>Years:</h1><span class="date-text">{{years}}</span></ion-item>
+    <ion-item class="list-group-item"><h1>Months:</h1><span class="date-text">{{clean_date | amDifference: nowDate :'months' : true}}</span></ion-item>
+    <ion-item class="list-group-item"><h1>Days:</h1><span class="date-text">{{days}}</span></ion-item>
+    <ion-item class="list-group-item"><h1>Hours:</h1><span class="date-text">{{hours}}</span></ion-item>
+    <ion-item class="list-group-item"><h1>Minutes:</h1><span class="date-text">{{minutes}}</span></ion-item>
+    <!--
+    <ion-item-divider class="list-group-item color="light"><h1>Your Date:</h1><span class="date-text" ng-bind="sobriety_date"></span></ion-item-divider>
+  -->
+  </ion-item-group>
+<!--
+  <button ion-item id="resetButton" (click)="start_up()">Click to Reset</button>
+-->
 </ion-content>
