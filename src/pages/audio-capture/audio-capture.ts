@@ -21,6 +21,8 @@ export class AudioPage {
   audio: MediaObject;
   audioList: any[] = [];
   logMessages: any[] = [];
+  interval:any;
+  duration = -1;
 
   constructor(public navCtrl: NavController,
     public platform: Platform,
@@ -74,14 +76,24 @@ export class AudioPage {
         this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + filePath;
         this.audio = this.media.create(this.filePath);
       }
-      let duration = this.audio.getDuration();
-      this.logMessage('duration:' + duration)
       //this.audio.onStatusUpdate.subscribe(status => console.log(status)); // fires when file status changes
       //this.audio.onSuccess.subscribe(() => console.log('Action is successful'));
       this.audio.onError.subscribe(error => alert('Error!' + error));
 
       this.audio.play();
-      this.audio.setVolume(0.8);
+      this.interval = setInterval(() => {
+        if(this.duration == -1) {
+          this.duration = this.audio.getDuration();
+          this.logMessage('duration:'+this.duration)
+        } else {
+          //this.audio.stop();
+          //this.audio.setVolume(1.0);
+          clearInterval(this.interval);
+        }
+     }, 10);
+     //this.audio.play();
+     this.audio.setVolume(1.0);
+
     } catch (e) {
       this.logMessage('exception playing audio:' + e)
     }
