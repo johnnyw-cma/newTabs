@@ -16,7 +16,8 @@ export class ReadingsPage {
 		public navCtrl: NavController,
 		private platform: Platform) {
 
-		this.readings_url = "https://crystalmeth.org/cma-meetings/start-a-meeting/meeting-readings/category/3-cma-readings.html";
+		//this.readings_url = "https://crystalmeth.org/cma-meetings/start-a-meeting/meeting-readings/category/3-cma-readings.html";
+		this.readings_url = "https://docs.google.com/document/d/e/2PACX-1vSdOCikEDnaSelvL69ocDhtShghd-UjutaGiXfw3WRByOJtAKGkbzbDFPvA5FcqJbrXV4MqzQ3s_c6n/pub?embedded=true";
 		
 		platform.ready().then(() => {
 			let resp = this.gettHtmlContent(this.readings_url);
@@ -29,10 +30,7 @@ export class ReadingsPage {
 			method: 'GET',
 			simple: false,
 			headers: {
-				'User-Agent': 'CMA App',
-				'Origin': null,
-				'Referer': 'http://crystalmeth.org',
-				'Accept': 'text/json'
+				"Content-Type": "text/plain"
 			},
 			uri: uri,
 		};

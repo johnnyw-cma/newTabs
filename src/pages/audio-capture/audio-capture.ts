@@ -104,6 +104,9 @@ export class AudioPage {
 
   playAudio(filePath, idx) {
     try {
+      if (this.playing)
+        this.audio.stop();
+        
       this.logMessage('playing')
       if (this.platform.is('ios')) {
         this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + filePath;
