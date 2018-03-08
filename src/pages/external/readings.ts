@@ -20,8 +20,6 @@ export class ReadingsPage {
 		this.readings_url = "https://docs.google.com/document/d/e/2PACX-1vSdOCikEDnaSelvL69ocDhtShghd-UjutaGiXfw3WRByOJtAKGkbzbDFPvA5FcqJbrXV4MqzQ3s_c6n/pub?embedded=true";
 		
 		platform.ready().then(() => {
-			let resp = this.gettHtmlContent(this.readings_url);
-			console.log(resp)
 			this.gettHtmlContent(this.readings_url).then(resp => {
 				this.readingsHtmlContent = resp;
 				this.readingsHtmlContent = this.readingsHtmlContent.replace('{','')
