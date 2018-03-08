@@ -21,13 +21,19 @@ export class ReadingsPage {
 		
 		platform.ready().then(() => {
 			let resp = this.gettHtmlContent(this.readings_url);
-			console.log(JSON.stringify(resp));
+			console.log(resp)
+			this.gettHtmlContent(this.readings_url).then(resp => {
+				this.readingsHtmlContent = resp;
+				this.readingsHtmlContent = this.readingsHtmlContent.replace('{','')
+				this.readingsHtmlContent = this.readingsHtmlContent.replace('}','')
+				console.log(this.readingsHtmlContent)
+			})
 		})
 	}
 
 	gettHtmlContent(uri) {
 		var options = {
-			method: 'GET',
+			method: 'GET', 
 			simple: false,
 			headers: {
 				"Content-Type": "text/plain"
@@ -36,7 +42,7 @@ export class ReadingsPage {
 		};
 		return rp(options)
 			.then(function (resp) {
-				const $ = this.cheerio.load(resp);
+				const $ = cheerio.load(resp);
 				var htmlString = $('body').html();
 				return htmlString;
 			})
