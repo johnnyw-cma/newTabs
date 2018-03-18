@@ -7,6 +7,7 @@ import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import * as rp from 'request-promise';
 import { Cheerio } from 'cheerio';
+import { Firebase } from '@ionic-native/firebase';
 
 import { AboutPage } from '../pages/about/about';
 import { AudioPage } from '../pages/audio-capture/audio-capture';
@@ -49,6 +50,7 @@ import moment from 'moment';
   providers: [
     StatusBar,
     Media,
+    Firebase,
     File,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
