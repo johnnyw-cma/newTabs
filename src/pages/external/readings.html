@@ -1,9 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Content</ion-title>
+    <ion-title>Meeting Readings</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <div [innerHTML]="readingsHtmlContent"></div>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <button ion-button (click)="choice_made(this.tweaker_esp)">Eres Un Adicto&nbsp;&nbsp;&nbsp;<ion-icon name="book"></ion-icon></button>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="choice_made(this.tweaker_eng)">Are You a Tweaker&nbsp;&nbsp;&nbsp;<ion-icon name="book"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+  <div class="marginalized" [innerHTML]="readingsHtmlContent"></div>
 </ion-content>

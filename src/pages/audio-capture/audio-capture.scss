@@ -1,3 +1,102 @@
 page-audio-capture {
-
+    /*list*/
+.list_page{
+	background:url(../assets/imgs/bg.png)no-repeat !important;
+	background-size:100% 100% !important;
+	} 
+.list_item .col-25{
+	text-align:center
+	}
+.list_item{
+	background:rgba(0,0,0,0.25);
+	border-bottom:1px solid #000
+	}		
+.list_item img{
+	width: 55px;
+	height: 55px;
+	border-radius: 55px;
+	margin-top: 11px;
+	}	
+.list_item h3{
+	font-size:14px;
+	color:#fff;
+	margin-bottom:5px;
+	margin-top:5px;
+	}
+.list_item{
+	text-decoration:none;
+	color:#fff
+	}	
+.time{
+	float: right;
+	font-weight: normal;
+	font-size: 13px;
+	}
+.litle_parag{
+    color: #caab02;
+    line-height: 17px;
+    height: 36px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    }
+.list_item	.row{
+	height:105px;
+	}
+.list_item .likes_share{
+	height:auto
+	}	
+.likes_share p{
+	font-size:13px;
+	margin:0;
+	color:#b8b6b6
+	}	
+.likes_share i{
+	padding-right:5px;
+	}
+.likes_share .more{
+	float:right;
+	font-size:21px;
+	}
+.likes_share .more>i{
+	padding:0
+	}
+.likes_share{
+	padding:0;
+	}
+.likes_share .col{
+	padding:0;
+	text-align:left;
+	position:relative
+}
+    .record_page{
+        text-align:center;
+        color:#fff
+        }
+    .record_page h3{
+        font-size: 35px;
+        text-align: center;
+        color: #fff;
+        margin-top: 35%;
+        font-weight: normal;
+        padding-bottom: 20px;
+        }
+    .record_page img{
+        width:100%;
+        height:38px;
+        margin-bottom:10px;
+        }	
+    .record_btn{
+        width:54px;
+        height:54px;
+        border-radius:50%;
+        margin:15px auto;
+        display:block;
+        background:#ed1c24;
+        color:#fff;
+        font-size:32px;
+        }	
+    .record_btn.button.activated{
+        background:#ed1c24;
+        opacity:0.6
+        }
 }

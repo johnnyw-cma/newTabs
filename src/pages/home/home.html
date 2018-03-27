@@ -11,7 +11,7 @@
   </ion-item>
   <ion-item-group id="computedTime" *ngIf="clean_date" class="vertical-align-content">
     <ion-item class="list-group-item"><h1>Years:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'years' : true | number : '1.2-2'}}</span></ion-item>
-    <ion-item class="list-group-item"><h1>Months:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'months' : true | number : '1.2-2'}}</span></ion-item>
+    <ion-item class="list-group-item"><h1>Months:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'months' : true | number : '1.1-1'}}</span></ion-item>
     <ion-item class="list-group-item"><h1>Days:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'days' : true | number:'1.0-0' }}</span></ion-item>
     <ion-item class="list-group-item"><h1>Hours:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'hours' : true | number:'1.0-0' }}</span></ion-item>
     <ion-item class="list-group-item"><h1>Minutes:</h1><span class="date-text">{{nowDate | amDifference: clean_date :'minutes' : true | number:'1.0-0' }}</span></ion-item>

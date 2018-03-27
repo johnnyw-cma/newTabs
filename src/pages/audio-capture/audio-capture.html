@@ -1,20 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Sound Recorder & Player
+      Speaker Recording
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="list_page record_page">
   <ion-card>
     <ion-card-content>
-      <ion-card-title>
-        <button ion-button primary (click)="stopRecord()" color="danger" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
+        <button iclass="button button-icon record_btn" (click)="stopRecord()" color="danger" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
         <ion-item *ngIf="recording" >{{recordingDuration | amDateFormat:'HH:mm:ss'}}</ion-item>
-        <button ion-button primary (click)="showPrompt()" *ngIf="!recording && !playing"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</button>
+        <button class="button button-icon record_btn" (click)="showPrompt()" *ngIf="!recording && !playing"><ion-icon name="mic"></ion-icon></button>
         <button ion-button primary (click)="stopPlayback()" *ngIf="playing"><ion-icon name="hand"></ion-icon>&nbsp;&nbsp;Stop Playback</button>
-      </ion-card-title>
     </ion-card-content>
   </ion-card>
   <ion-list>

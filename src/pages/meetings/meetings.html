@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Find a Meeting
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div id='map'>
+    <button ion-button (click)="onButtonClick($event)">Demo</button>
+  </div>
+
+  <!--
+  <button iclass="button button-icon" (click)="filterByState('TX')" ><ion-icon name="locate"></ion-icon>Filter TX</button>
+  -->
+  <ion-item>Lat: {{user_loc.latitude}}</ion-item>
+  <ion-item>Long: {{user_loc.longitude}}</ion-item>
+  
+  <!--
+<ion-card max-height=60%>
+  <ion-list>
+    <ion-item *ngFor="let item of state_list">
+      <h2>{{ item.entry['$'].id }}:{{ item.entry['$'].name }}</h2>
+      <h3>{{ item.entry.field_street_address[0] }}</h3>
+      <h3>{{ item.entry.field_city[0] }}</h3>
+      <h3>{{ item.entry.codes }}</h3>
+      <h3>distance: {{ item.entry.distance | number:'1.2-2'}} miles</h3>
+    </ion-item>
+  </ion-list>
+</ion-card>
+-->
+</ion-content>

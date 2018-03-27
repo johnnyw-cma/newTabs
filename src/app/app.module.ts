@@ -8,11 +8,17 @@ import { File } from '@ionic-native/file';
 import * as rp from 'request-promise';
 import { Cheerio } from 'cheerio';
 import { Firebase } from '@ionic-native/firebase';
+import { HaversineService } from "ng2-haversine";
+import { Parser } from 'xml2js';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
+
 
 import { AboutPage } from '../pages/about/about';
 import { AudioPage } from '../pages/audio-capture/audio-capture';
 import { ContactPage } from '../pages/contact/contact';
 import { ReadingsPage } from '../pages/external/readings';
+import { MeetingsPage } from '../pages/meetings/meetings';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -27,6 +33,7 @@ import moment from 'moment';
     AboutPage,
     ContactPage,
     ReadingsPage,
+    MeetingsPage,
     AudioPage,
     HomePage,
     TabsPage
@@ -43,6 +50,7 @@ import moment from 'moment';
     AboutPage,
     ReadingsPage,
     AudioPage,
+    MeetingsPage,
     ContactPage,
     HomePage,
     TabsPage
@@ -51,6 +59,9 @@ import moment from 'moment';
     StatusBar,
     Media,
     Firebase,
+    HaversineService,
+    Geolocation,
+    GoogleMaps,
     File,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
